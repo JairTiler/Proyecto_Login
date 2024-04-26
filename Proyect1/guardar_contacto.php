@@ -12,11 +12,11 @@
     <h2>Agregar Contacto</h2>
     <form action="crear_contacto.php" method="POST">
     
-        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="nombre" placeholder="combre" required>
         <br/>
         <input type="text" name="telefono" placeholder="telefono" required>
         <br/>
-        <input type="text" name="correo" placeholder="telefono" require>
+        <input type="email" name="correo" placeholder="correo" require>
         <input type="submit" value="Agregar Contactos"></input>
     </form>
 </body>

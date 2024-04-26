@@ -1,6 +1,7 @@
 <?php
 # Conexión a la base de datos utilizando PDO
 include_once("conexion.php");
+session_start();
 
 # Recibir datos del formulario
 $correo = $_POST['correo'];
@@ -14,6 +15,8 @@ $stmt_verificar->execute();
 
 if($stmt_verificar->rowCount() > 0) {
     echo "<script>alert('Ya existe un usuario con este correo electrónico, Intente de nuevo.')</script>";
+    echo "<script>window.location='guardar_usuario.php';</script>";
+
 } else {
     # Insertar nuevo contacto en la base de datos
     $sql = "INSERT INTO usuarios (correo, contrasena) VALUES (:correo, :contrasena)";
@@ -24,7 +27,7 @@ if($stmt_verificar->rowCount() > 0) {
 try {
     $stmt->execute();
     echo "<script>alert('Usuario agregado exitosamente.')</script>"; 
-    header('Location: listar_usuarios.php');
+    header('Location:index.php');
 } catch (PDOException $e) {
     echo "Error al agregar usuario: " . $e->getMessage();
 }
